@@ -2,45 +2,56 @@
 <html lang="en">
 <head>
 <title>Cricket Game</title>
-<style>
-body { text-align: center; font-family: Arial, sans-serif; }
-button { padding: 10px 20px; margin: 10px; cursor: pointer; border-radius: 5px; }
-</style>
+<llink rel="stylesheet" href="cricket.css">
 </head>
 <body>
 <h1>Bat Ball Stump Game</h1>
 
-<button onclick="
+
+
+<button class="choice-button" onclick="
 computerChoice = generateComputerChoice();
 resultMsg = getResult('Bat', computerChoice);
 showResult('Bat', computerChoice, resultMsg);
-">Bat</button>
+"><img src="images/bat.png" alt="Bat" class="choice-image"></button>
 
-<button onclick="
+<button class="choice-button" onclick="
 computerChoice = generateComputerChoice();
- resultMsg = getResult('Ball', computerChoice);
+resultMsg = getResult('Ball', computerChoice);
 showResult('Ball', computerChoice, resultMsg);
-">Ball</button>
+"><img src="images/ball.png" alt="Ball" class="choice-image"></button>
 
-<button onclick="
+<button class="choice-button" onclick="
 computerChoice = generateComputerChoice();
 resultMsg = getResult('Stump', computerChoice);
 showResult('Stump', computerChoice, resultMsg);
-">Stump</button>
+"><img src="images/stump.png" alt="Stump" class="choice-image"></button>
 
 <button onclick="
 localStorage.clear();
-resetScore();
+resetScore(); 
+document.querySelector('#user-move').textContent = '';
+document.querySelector('#comp-move').textContent = '';
+document.querySelector('#result').textContent = '';
 ">Reset</button>
+
+<h3 id="user-move"></h3>
+<h3 id="comp-move"></h3>
+<h3 id="result"></h3>
+<h3 id="score-display"></h3>
 
 <script>
 let scoreStr = localStorage.getItem('Score');
 let score;
+let computerChoice;
+let resultMsg;
+
+// Pehli baar load hone par
 resetScore(scoreStr);
 
 function resetScore(scoreStr) {
-// Yahan 'let' hata diya taaki global 'score' use ho
-score = JSON.parse(scoreStr) || {
+// Agar scoreStr null hai (jaise Reset ke baad), toh default values set hongi
+score = scoreStr ? JSON.parse(scoreStr) : {
 win: 0,
 lose: 0,
 tie: 0,
@@ -49,6 +60,9 @@ tie: 0,
 score.displayScore = function() {
 return `Score: ${this.win} Wins, ${this.lose} Lost, ${this.tie} Tie`;
 };
+
+// Reset hone par ya load hone par score screen par update karein
+document.querySelector('#score-display').textContent = score.displayScore();
 }
 
 function generateComputerChoice() {
@@ -87,10 +101,10 @@ return 'User won.';
 }
 } else { // Stump
 if (computerMove === 'Ball') {
-score.lose++; // Correction: Ball hits stump
+score.lose++; 
 return 'Computer has won.';
 } else if (computerMove === 'Bat') {
-score.win++; // Stump beats Bat
+score.win++; 
 return 'User won';
 } else {
 score.tie++;
@@ -101,11 +115,18 @@ return `It's a tie`;
 
 function showResult(userMove, computerMove, result) {
 localStorage.setItem('Score', JSON.stringify(score));
-alert(`You have chosen ${userMove}. Computer choice is ${computerMove}
 
-${result}
+document.querySelector('#user-move').textContent =
+userMove !== undefined ? `User chose: ${userMove}` : '';
 
-${score.displayScore()}`);
+document.querySelector('#comp-move').textContent =
+computerMove !== undefined ? `Computer chose: ${computerMove}` : '';
+
+document.querySelector('#result').textContent =
+result !== undefined ? result : '';
+
+document.querySelector('#score-display').textContent =
+score !== undefined ? score.displayScore() : '';
 }
 </script>
 </body>

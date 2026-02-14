@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>practicce</title>
+</head>
+<body>
+  <script>
+    let product = {
+      name: 'jeans',
+      size: 's',
+      fit: 'slim',
+      'delivery time': '5 days'
+    };
+   /* let copyProduct = product;
+    console.log(copyProduct);
+    copyProduct.name = 'M';
+    console.log(product);
+    copyProduct.fit = 'regular';
+    console.log(product); */
+    console.log(product['delivery time']);
+
+    let obj = {
+      messag: 'Hello World',
+      status: 'success',
+    };
+    console.log(messag, status); //error because they are not defined in the global scope
+    console.log(message);
+    console.log(obj['status']);
+
+    function isIdenticalproduct(product1, product2){
+            if (typeof product1 !== 'object' || typeof product2 !== 'object' || product1 === null || product2 === null) {
+        return false;
+      }
+
+
+      if(product1 === product2){
+        return true;
+      }
+      if (product1.name !== product2.name || product1.size !== product2.size || product1.fit !== product2.fit) {
+        return false;
+      }
+      return true;
+    }
+  </script>
+</body>
+</html>

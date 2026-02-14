@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>practiseex</title>
+  <style>
+    /* CSS ko style tag mein rakha hai */
+    #my-button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: lightblue;
+    }
+    .odd {
+      background-color: lightgray;
+    }
+    .even {
+      background-color: lightyellow;
+    }
+  </style>
+</head>
+<body>
+  <h3 id="greeting"></h3>
+  <button id="my-button" onclick="buttonpressed()">0</button>
+
+  <script>
+    let nooftimeclicked = 0;
+    function buttonpressed() {
+      let button = document.querySelector('#my-button');
+      nooftimeclicked++;
+      nooftimeclicked % 2 === 0 ? button.classList.add('even') : button.classList.add('odd');
+      button.innerText = nooftimeclicked;
+    }
+
+    function dogreeting(personName = 'praveen') {
+      // Greeting logic function ke andar rakha ja sakta hai
+      let hours = 13; // Testing ke liye 13 (Afternoon)
+      let heading = document.querySelector('#greeting');
+
+      if (hours >= 5 && hours < 12) {
+        heading.innerText = `Good Morning, ${personName}`;
+      } else if (hours >= 12 && hours < 17) {
+        heading.innerText = `Good Afternoon, ${personName}`;
+      } else if (hours >= 17 && hours < 21) {
+        heading.innerText = `Good Evening, ${personName}`;
+      } else {
+        heading.innerText = `Good Night, ${personName}`;
+      }
+    }
+
+    // Function call kiya
+    dogreeting('Praveen');
+  </script>
+</body>
+</html>
