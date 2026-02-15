@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Advance function</title>
+
+</head>
+<body>
+  <button id="my-button" >click-me</button>
+  <script>
+
+   /* let buttonElement = document.querySelector('#my-button');
+   let behavior = event => console.log('Button clicked');
+   buttonElement.addEventListener('click', behavior);
+
+
+let printDate = () => console.log(Date());
+buttonElement.addEventListener('click', printDate);
+buttonElement.removeEventListener('click', printDate); */
+
+
+/*let arr = [1, 2, 3, 4, 5];
+for(let i = 0; i < arr.length; i++){
+  console.log(arr[i]);
+}
+arr.forEach(element => console.log(element));*/ 
+
+let arr = [1, 2, 3, 4, 5];
+let oddsc = arr.filter((num,index) => {
+  if(num % 2 !== 0){
+    return true;
+  }
+  return false; 
+});
+console.log(oddsc);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //let sum = function(num1, num2){
+     // return num1 + num2;
+   // };
+    /*
+    let newSum = sum;
+
+    console.log(sum(2, 3, ));
+    console.log(newSum(2, 3)); */
+/*
+    let sumThree = function(num1, num2, num3, sumTwoNumbera){
+      let sum1 = sumTwoNumbera(num1, num2);
+      return sumTwoNumbera
+    };
+    console.log(sumThree(2, 3, 4, sum));
+    console.log(sumThreeNumbers);
+    console.log(typeof sumThreeNumbers); */
+
+    /*let sum = (num1, num2) => {
+      return num1 + num2;
+    }
+    console.log(sum(2, 3));
+
+    let square = (num) => {
+      return num * num;
+    }
+    console.log(square(5)); */
+
+//setTimeout(() => console.log('Good Morning.'), 2000);
+//console.log('Alarm set');
+
+let alarm = () => console.log(`Wake up. ${Date()}`);
+/*let timerid = setTimeout(alarm, 2000);
+console.log(`Alarm set with timerID: ${timerid}`);
+clearTimeout(timerid);*/
+
+setIntervalID = setInterval(alarm, 2000);
+setTimeout(() => clearInterval(setIntervalID), 10000);
+  </script>
+  
+</body>
+</html>
