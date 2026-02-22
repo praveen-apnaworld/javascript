@@ -6,7 +6,7 @@ const sumRequestHandler = (req, res) => {
    const bodyString = Buffer.concat(body).toString();
   const params = new URLSearchParams(bodyString);
   const bodyobj = Object.fromEntries(params);
-  const result = bodyobj.first + bodyobj.second;
+  const result = Number(bodyobj.first) + Number(bodyobj.second);
   console.log(result);
 
   });
